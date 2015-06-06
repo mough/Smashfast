@@ -37,8 +37,10 @@ class Death(Scene):
         exit(1)
 
 class Opening_Scene(Scene):
-    print "opening scene text here"
-    return "scene1"
+
+    def enter(self):
+        print "opening scene text here"
+        return 'scene1'
 
 class Scene_1(Scene):
 
@@ -72,7 +74,7 @@ class Scene_2(Scene):
 
         if action == "option_a":
             print "outcome of option_a"
-            return 'scene2'
+            return 'scene3'
 
         elif action == "option_b":
             print "outcome of option_b"
@@ -95,7 +97,7 @@ class Scene_3(Scene):
 
         if action == "option_a":
             print "outcome of option_a"
-            return 'scene3'
+            return 'scene4'
 
         elif action == "option_b":
             print "outcome of option_b"
@@ -118,7 +120,7 @@ class Scene_4(Scene):
 
        if action == "option_a":
            print "Option A description"
-           return 'final_scene'
+           return 'finalscene'
 
        elif action == "option_b":
            print "Option B description"
@@ -136,7 +138,7 @@ class Final_Scene(Scene):
 
     def enter(self):
         print "You won! Good job."
-        return 'finished'
+        exit()
 
 class Map(object):
 
@@ -147,6 +149,7 @@ class Map(object):
         'scene3': Scene_3(),
         'scene4': Scene_4(),
         'finalscene': Final_Scene(),
+        'death': Death(),
     }
 
     def __init__(self, start_scene):
@@ -160,6 +163,6 @@ class Map(object):
         return self.next_scene(self.start_scene)
 
 
-a_map = Map('central_corridor')
+a_map = Map('openingscene')
 a_game = Engine(a_map)
 a_game.play()
